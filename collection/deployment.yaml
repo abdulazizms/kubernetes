@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aziz-app
+spec:
+  selector:
+    matchLabels:
+      app: aziz
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: aziz
+    spec:
+      imagePullSecrets:
+      - name: harbor
+      containers:
+      - name: aziz-app
+        image: harbor.azizpunya.com:8443/lab-kube/nginx:1
+        ports:
+        - containerPort: 80
+        resources:
+         requests:
+          memory: 100M
+          cpu: 100m
+         limits:
+          memory: 200M
+          cpu: 200m
+        readinessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10

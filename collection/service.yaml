@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: aziz-service
+  namespace: default
+spec:
+  selector:
+    app: aziz
+  ports:
+    - port: 80
