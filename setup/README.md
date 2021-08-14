@@ -88,7 +88,7 @@ notes: for multi master, load balancer is needed for load balance the master nod
 
 - join worker to cluster
 
-get output command from master
+get output from this command from master node
 
 \# kubeadm token create --print-join-command
 
