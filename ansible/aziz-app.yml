@@ -11,5 +11,3 @@
   - kubernetes
   vars_files:
   - "inventories/{{ long_env }}/group_vars/aziz-app_builder/vars.yml"
-  tags:
-  - deploy
