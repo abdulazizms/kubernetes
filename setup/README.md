@@ -74,8 +74,28 @@ deb http://apt.kubernetes.io kubernetes-xenial main
 
 \# kubeadm init --pod-network-cidr 192.168.0.0/16
 
-## - for multi master node, init from 1 of master
+## - for multi master node, init from one of master
 
-\# kubeadm init --control-plane-endpoint "loadbalancer-ip-of-masters:6443" --upload-certs --pod-network-cidr 192.168.0.0/16
+\# kubeadm init --control-plane-endpoint "loadbalancer-ip-masters:6443" --upload-certs --pod-network-cidr 192.168.0.0/16
 
 notes: for multi master, load balancer is needed for load balance the master nodes.
+
+# Join another master (multi master) or worker
+
+- join another master to cluster
+
+\# kubeadm join loadbalancer-ip-masters:6443 --token [token] --discovery-token-ca-cert-hash [token] --control-plane --certificate-key [key]
+
+- join worker to cluster
+
+get output command from master
+
+\# kubeadm token create --print-join-command
+
+- for single master
+
+\# kubeadm join ip-master:6443 --token [token] --discovery-token-ca-cert-hash [token]
+
+- for multi master
+
+\# kubeadm join loadbalancer-ip-master:6443 --token [token] --discovery-token-ca-cert-hash [token]
