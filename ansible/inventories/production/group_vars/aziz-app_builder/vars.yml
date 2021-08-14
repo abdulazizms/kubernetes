@@ -9,7 +9,7 @@ ssl: false
 ssl_name: "{{ app_name }}"
 app_base_dir: "/home/ubuntu/{{ app_name }}"
 
-git_branch: "master"
+git_branch: "main"
 app_repo: "git@github.com:abdulazizms/reactjs.git"
 
 memory: "100M"
