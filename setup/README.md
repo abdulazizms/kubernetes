@@ -1,5 +1,22 @@
 # kubernetes setup
 
+# Configure sysctl
+
+\# vim /etc/sysctl.d/kubernetes.conf
+
+- add lines below to the file
+
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+
+\# vim /etc/modules-load.d/kubernetes.conf
+
+- add line below to the file
+
+br_netfilter
+
+\# sysctl --system
+
 # Install kubelet, kubeadm and kubectl on all nodes
 
 1. Add the Google repository key.
