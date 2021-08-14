@@ -2,16 +2,24 @@
 - name: Set base dir
   set_fact:
     app_base_dir: "/home/ubuntu/{{ app_name }}-{{ long_env }}"
+  tags:
+     - deploy
 
 - name: Set container name
   set_fact:
     app_container_name: "{{ app_name }}"
   when: app_container_name is not defined
+  tags:
+     - deploy
 
 - import_tasks: "setup_repo.yml"
   tags:
   - setup_repo
+  tags:
+     - deploy
 
 - import_tasks: "build_docker.yml"
   tags:
   - build_docker
+  tags:
+     - deploy
