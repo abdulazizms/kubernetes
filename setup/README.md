@@ -15,15 +15,15 @@ deb http://apt.kubernetes.io kubernetes-xenial main
 
 \# apt-get update
 
-install latest version of kubelet, kubeadm and  kubectl
+- install latest version of kubelet, kubeadm and  kubectl
 
 \# apt-get install kubelet kubeadm kubectl
 
-or install specific version of kubelet, kubeadm and  kubectl
+- or install specific version of kubelet, kubeadm and  kubectl
 
 \# apt install -y kubeadm=1.21.4-00 kubelet=1.21.4-00 kubectl=1.21.4-00
 
-to get version list
+- to get version list
 
 \# apt list -a kubeadm
 
@@ -34,7 +34,7 @@ to get version list
 
 # Install container runtime on all nodes (docker/containerd/cri-o)
 
-for example using containerd
+- for example using containerd
 
 1. Install containerd
 
