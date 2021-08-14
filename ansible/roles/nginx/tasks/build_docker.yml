@@ -1,10 +1,10 @@
 ---
 
 - name: Build docker apps image
-  shell: docker build -t harbor.azizpunya.com:8443/{{ app_name }}-{{ long_env | lower }}:{{ version }} -f Dockerfile . chdir={{ app_base_dir }}
+  shell: docker build -t harbor.azizpunya.com:8443/{{ project_harbor }}/{{ app_name }}-{{ long_env | lower }}:{{ version }} -f Dockerfile . chdir={{ app_base_dir }}
 
 - name: push app to harbor
-  shell: docker push harbor.azizpunya.com:8443/{{ app_name }}-{{ long_env | lower }}:{{ version }}
+  shell: docker push harbor.azizpunya.com:8443/{{ project_harbor }}/{{ app_name }}-{{ long_env | lower }}:{{ version }}
 
 - name: remove docker image
-  shell: docker rmi -f harbor.azizpunya.com:8443/{{ app_name }}-{{ long_env | lower }}:{{ version }}
+  shell: docker rmi -f harbor.azizpunya.com:8443/{{ project_harbor }}/{{ app_name }}-{{ long_env | lower }}:{{ version }}
