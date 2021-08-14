@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ app_name }}
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+{% if ssl == true %}
+  tls:
+  - hosts:
+    - {{ domain_name }}
+    secretName: {{ ssl_name }}
+{% endif %}
+  rules:
+  - host: {{ domain_name }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ app_name }}
+            port:
+              number: {{ port }}

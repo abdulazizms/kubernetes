@@ -1,0 +1,43 @@
+---
+- name: Make sure template directory exist
+  file:
+    path: "{{ template_app_dir }}"
+    state: directory
+    owner: "{{ bootstrap_user }}"
+    group: "{{ bootstrap_user }}"
+    mode: 0775
+
+- name: Copy deployment, hpa, ingress and service
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ template_app_dir }}/{{ item }}-{{ app_name }}.yaml"
+    mode: 0700
+  with_items:
+   - deployment
+   - service
+   - hpa
+   - ingress
+
+- name: execute kubernetes apply deployment, hpa, and services
+  command: "kubectl apply -f deployment-{{ app_name }}.yaml -f hpa-{{ app_name}}.yaml -f service-{{ app_name }}.yaml -f ingress-{{ app_name }}.yaml chdir={{ template_app_dir }}"
+  register: check_apply
+
+- debug: msg="{{ check_apply.stdout }}"
+
+- name: waiting for pod ready
+  pause: seconds=30
+
+- name: check kubernetes pod
+  command: kubectl get pods -l app={{ app_name }} chdir={{ template_app_dir }}
+  register: check_apply
+
+- debug: msg="{{ check_apply.stdout }}"
+
+- name: waiting for pod ready
+  pause: seconds=30
+
+- name: check kubernetes po
+  command: kubectl get pods -l app={{ app_name }} chdir={{ template_app_dir }}
+  register: check_apply
+
+- debug: msg="{{ check_apply.stdout }}"

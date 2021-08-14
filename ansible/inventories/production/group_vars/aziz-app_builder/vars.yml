@@ -1,0 +1,21 @@
+---
+long_env: "production"
+app_name: "aziz-app"
+domain_name: "lab-kube.azizpunya.com"
+env: "{{ long_env }}"
+port: "80"
+ssl: false
+ssl_name: "{{ app_name }}"
+app_base_dir: "/home/ubuntu/{{ app_name }}"
+
+git_branch: "master"
+app_repo: "git@gitlab.com:abdulazizms/test-web.git"
+
+memory: "100M"
+cpu: "100M"
+memory_limit: "200M"
+cpu_limit: "200M"
+replica: "2"
+min_replica: "2"
+max_replica: "4"
+hpa_cpu_percent: "80"

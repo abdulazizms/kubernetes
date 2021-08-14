@@ -1,0 +1,18 @@
+# pull official base image
+FROM node:latest as build-step
+
+# set working directory
+WORKDIR /app
+
+# install app dependencies
+COPY repo/package.json /app
+COPY repo/package-lock.json /app
+RUN npm install --silent
+COPY repo/ /app
+RUN npm run build
+
+# add script to nginx
+FROM nginx:1.17.1-alpine
+RUN rm -rf /etc/nginx/conf.d/default.conf
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build-step /app/build /usr/share/nginx/html

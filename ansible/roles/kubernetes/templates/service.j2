@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ app_name }}
+  namespace: default
+spec:
+  selector:
+    app: {{ app_name }}
+  ports:
+    - port: {{ port }}

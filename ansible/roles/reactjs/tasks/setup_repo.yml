@@ -1,0 +1,39 @@
+---
+- name: Delete old content & directory
+  file:
+    state: absent
+    path: "{{ app_base_dir }}"
+
+- name: Ensure new directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
+  with_items:
+  - "{{ app_base_dir }}/repo"
+  - "{{ app_base_dir }}/conf"
+  become: yes
+
+- name: Copy Dockerfile
+  template:
+    src: "Dockerfile.j2"
+    dest: "{{ app_base_dir }}/Dockerfile"
+    mode: 0755
+
+- name: Copy config templates
+  template:
+    src: "{{ app_project_name }}/conf/{{ item }}.j2"
+    dest: "{{ app_base_dir }}/conf/{{ item }}"
+    mode: 0755
+  with_items:
+  - "nginx.conf"
+
+- name: Pull app from github
+  git:
+    repo: "{{ app_repo }}"
+    dest: "{{ app_base_dir }}/repo/"
+    version: "{{ git_branch }}"
+    force: yes
+  register: app_git_outputs

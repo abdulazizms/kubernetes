@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ app_name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ app_name }}
+  replicas: {{ replica }}
+  template:
+    metadata:
+      labels:
+        app: {{ app_name }}
+    spec:
+      imagePullSecrets:
+      - name: harbor
+      containers:
+      - name: {{ app_name }}
+        image: {{ image_url }}
+        ports:
+        - containerPort: {{ port }}
+        resources:
+         requests:
+          memory: {{ memory }}
+          cpu: {{ cpu }}
+         limits:
+          memory: {{ memory_limit }}
+          cpu: {{ cpu_limit }}
+        readinessProbe:
+          tcpSocket:
+            port: {{ port }}
+          initialDelaySeconds: 10
+          periodSeconds: 10

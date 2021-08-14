@@ -1,0 +1,33 @@
+---
+- name: Set variables rollback
+  set_fact:
+    build_version: "{{ rversion if rversion is defined and rversion | int > 0 else version}}"
+    app_name: "{{ app_name }}"
+  tags:
+    - rollback
+
+- name: Set variables deploy
+  set_fact:
+    build_version: "{{ version }}"
+    app_name: "{{ app_name }}"
+  tags:
+    - deploy
+
+- name: Set template app dir
+  set_fact:
+    template_app_dir: "/home/{{ bootstrap_user }}/templates"
+  tags:
+     - rollback
+     - deploy
+
+- name: Set images url
+  set_fact:
+    image_url: "harbor.azizpunya.com:8443/{{ project_harbor }}/{{ app_name }}-{{ long_env | lower }}:{{ build_version }}"
+  tags:
+     - rollback
+     - deploy
+
+- import_tasks: copy-file.yml
+  tags:
+     - rollback
+     - deploy
