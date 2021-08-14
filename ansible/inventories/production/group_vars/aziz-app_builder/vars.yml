@@ -4,7 +4,7 @@ app_project_name: "{{ app_name }}"
 domain_name: "lab-kube.azizpunya.com"
 env: "{{ long_env }}"
 port: "80"
-ssl: false
+ssl: true
 ssl_name: "{{ app_name }}"
 app_base_dir: "/home/ubuntu/{{ app_name }}-{{ long_env }}"
 project_harbor: "lab-kube"
