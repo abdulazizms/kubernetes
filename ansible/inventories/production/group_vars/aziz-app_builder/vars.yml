@@ -7,7 +7,7 @@ env: "{{ long_env }}"
 port: "80"
 ssl: false
 ssl_name: "{{ app_name }}"
-app_base_dir: "/home/ubuntu/{{ app_name }}"
+app_base_dir: "/home/ubuntu/{{ app_name }}-{{ long_env }}"
 
 git_branch: "main"
 app_repo: "https://github.com/abdulazizms/reactjs.git"
