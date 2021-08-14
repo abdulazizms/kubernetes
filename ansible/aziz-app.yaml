@@ -10,4 +10,4 @@
   roles:
   - kubernetes
   vars_files:
-  - "inventories/{{ long_env }}-vpc/group_vars/aziz-app_builder/vars.yml"
+  - "inventories/{{ long_env }}/group_vars/aziz-app_builder/vars.yml"
