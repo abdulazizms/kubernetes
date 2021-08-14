@@ -1,6 +1,7 @@
 ---
 long_env: "production"
 app_name: "aziz-app"
+app_project_name: "{{ app_name }}"
 domain_name: "lab-kube.azizpunya.com"
 env: "{{ long_env }}"
 port: "80"
