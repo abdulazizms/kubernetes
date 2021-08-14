@@ -12,6 +12,7 @@ deb http://apt.kubernetes.io kubernetes-xenial main
 3- Update the list of packages and install kubelet, kubeadm and kubectl.
 
 \# apt-get update
+
 \# apt-get install kubelet kubeadm kubectl
 
 4- Disable the swap.
