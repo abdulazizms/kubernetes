@@ -92,10 +92,10 @@ get output from this command from master node
 
 \# kubeadm token create --print-join-command
 
-- for single master
+- join worker for single master
 
 \# kubeadm join ip-master:6443 --token [token] --discovery-token-ca-cert-hash [token]
 
-- for multi master
+- join worker for multi master
 
 \# kubeadm join loadbalancer-ip-master:6443 --token [token] --discovery-token-ca-cert-hash [token]
