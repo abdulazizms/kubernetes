@@ -70,11 +70,11 @@ deb http://apt.kubernetes.io kubernetes-xenial main
 
 # Init kubernetes master node
 
-- for single master node
+## - for single master node
 
 \# kubeadm init --pod-network-cidr 192.168.0.0/16
 
-- for multi master node, init from 1 of master
+## - for multi master node, init from 1 of master
 
 \# kubeadm init --control-plane-endpoint "loadbalancer-ip-of-masters:6443" --upload-certs --pod-network-cidr 192.168.0.0/16
 
