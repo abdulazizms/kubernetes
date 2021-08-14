@@ -67,3 +67,15 @@ deb http://apt.kubernetes.io kubernetes-xenial main
 \# systemctl start containerd
 
 \# systemctl enable containerd
+
+# Init kubernetes master node
+
+- for single master node
+
+\# kubeadm init --pod-network-cidr 192.168.0.0/16
+
+- for multi master node, init from 1 of master
+
+\# kubeadm init --control-plane-endpoint "loadbalancer-ip-of-masters:6443" --upload-certs --pod-network-cidr 192.168.0.0/16
+
+notes: for multi master, load balancer is needed for load balance the master nodes.
