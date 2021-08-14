@@ -99,3 +99,19 @@ get output from this command from master node
 - join worker for multi master
 
 \# kubeadm join loadbalancer-ip-master:6443 --token [token] --discovery-token-ca-cert-hash [token]
+
+# Install CNI (choose one)
+
+- Calico typha
+
+\# kubectl apply -f https://docs.projectcalico.org/manifests/calico-typha.yaml
+
+- Flannel
+
+\# kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+# Install nginx ingress
+
+\# kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/static/provider/baremetal/deploy.yaml
+
+ref: https://kubernetes.github.io/ingress-nginx/deploy/#bare-metal
