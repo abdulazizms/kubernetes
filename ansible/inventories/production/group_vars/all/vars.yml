@@ -1,6 +1,6 @@
 ---
 long_env: "production"
-bootstrap_user: "ubuntu"
+bootstrap_user: "centos"
 memory: "100M"
 cpu: "100m"
 memory_limit: "200M"
