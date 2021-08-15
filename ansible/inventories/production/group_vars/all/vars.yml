@@ -1,2 +1,11 @@
 ---
 long_env: "production"
+bootstrap_user: "ubuntu"
+memory: "100M"
+cpu: "100m"
+memory_limit: "200M"
+cpu_limit: "200m"
+replica: "2"
+min_replica: "2"
+max_replica: "4"
+hpa_cpu_percent: "80"

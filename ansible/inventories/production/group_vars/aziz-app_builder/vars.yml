@@ -8,16 +8,6 @@ ssl: true
 ssl_name: "tls-{{ app_name }}"
 app_base_dir: "/home/ubuntu/{{ app_name }}-{{ long_env }}"
 project_harbor: "lab-kube"
-bootstrap_user: "ubuntu"
 
 git_branch: "main"
 app_repo: "https://github.com/abdulazizms/reactjs.git"
-
-memory: "100M"
-cpu: "100m"
-memory_limit: "200M"
-cpu_limit: "200m"
-replica: "2"
-min_replica: "2"
-max_replica: "4"
-hpa_cpu_percent: "80"
