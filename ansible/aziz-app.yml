@@ -6,7 +6,7 @@
     workdir: "{{ lookup('env', 'workdir') or '/home/ubuntu/aziz-app-{{ long_env }}' }}"
     version: "{{ lookup('env', 'version') or ansible_date_time.epoch }}"
 
-- hosts: Bootstrap
+- hosts: bootstrap
   roles:
   - kubernetes
   vars_files:
