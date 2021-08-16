@@ -12,6 +12,12 @@ spec:
       labels:
         app: {{ app_name }}
     spec:
+{% if pvc == true %}
+      volumes:
+      - name: {{ pvc_name }}
+        persistentVolumeClaim:
+          claimName: {{ pvc_name }}
+{% endif %}
       imagePullSecrets:
       - name: harbor
       containers:
@@ -31,3 +37,8 @@ spec:
             port: {{ port }}
           initialDelaySeconds: 10
           periodSeconds: 10
+{% if pvc == true %}
+        volumeMounts:
+        - name: {{ pvc_name }}
+          mountPath: {{ pvc_mount }}
+{% endif %}
