@@ -1,2 +1,4 @@
 FROM nginx:alpine
+RUN rm -f /etc/nginx/conf.d/default.conf
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 COPY repo/ /usr/share/nginx/html
