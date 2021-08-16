@@ -1,0 +1,6 @@
+---
+- hosts: master-2_host
+  roles:
+  - git-only
+  vars_files:
+  - "inventories/{{ long_env }}/group_vars/aziz-app_builder/vars.yml"

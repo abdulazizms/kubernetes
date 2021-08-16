@@ -1,0 +1,5 @@
+---
+- name: Get stuff from git
+  git:
+    repo: "{{ git_branch }}"
+    dest: "{{ git_dest }}"

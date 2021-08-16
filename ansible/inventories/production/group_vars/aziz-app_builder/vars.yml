@@ -11,6 +11,7 @@ project_harbor: "lab-kube"
 
 git_branch: "main"
 app_repo: "https://github.com/abdulazizms/reactjs.git"
+git_dest: "/home/centos/test-git"
 
 pvc: true
 pvc_name: "nfs-{{ app_name }}"
