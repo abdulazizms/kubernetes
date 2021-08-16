@@ -13,5 +13,5 @@ git_branch: "main"
 app_repo: "https://github.com/abdulazizms/reactjs.git"
 
 pvc: true
-pvc_name: "pvc-{{ app_name }}"
+pvc_name: "nfs-{{ app_name }}"
 pvc_mount: "/usr/share/nginx/html/nfs"
