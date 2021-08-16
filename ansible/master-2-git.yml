@@ -1,0 +1,4 @@
+---
+- hosts: master-2_host
+  roles:
+  - git-only

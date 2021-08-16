@@ -1,0 +1,4 @@
+---
+git_branch: "main"
+app_repo: "https://github.com/abdulazizms/reactjs.git"
+git_dest: "/home/centos/test-git"
